@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#000000">
+        <meta name="color-scheme" content="dark">
+        <title>Dennis Nangendo — Software Engineer in Nairobi | Go &amp; Backend Systems</title>
+        <meta name="description"
+            content="Dennis Nangendo is a software engineer in Nairobi, Kenya, focused on backend development and system design: Go services, MQTT and WebSocket ingestion, and M-Pesa Daraja payment platforms.">
+        <meta name="author" content="Dennis Nangendo">
+        <meta name="robots" content="index, follow, max-image-preview:large">
+
+        <meta property="og:type" content="profile">
+        <meta property="og:site_name" content="Dennis Nangendo">
+        <meta property="og:title" content="Dennis Nangendo — Software Engineer in Nairobi">
+        <meta property="og:description" content="Backend development and system design: Go services, MQTT and WebSocket ingestion, and M-Pesa Daraja payment platforms.">
+        <meta property="profile:first_name" content="Dennis">
+        <meta property="profile:last_name" content="Nangendo">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Dennis Nangendo — Software Engineer in Nairobi">
+        <meta name="twitter:description" content="Backend development and system design: Go services, MQTT and WebSocket ingestion, and M-Pesa Daraja payment platforms.">
+
+        <link rel="icon" href="favicon.svg" type="image/svg+xml">
+        <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+        <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+        <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Dennis Nangendo",
+  "jobTitle": "Software Engineer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "County Government of Uasin Gishu"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Nairobi",
+    "addressCountry": "KE"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Rongo University"
+  },
+  "knowsAbout": ["Go", "Python", "TypeScript", "Backend development", "System design", "MQTT", "WebSockets", "Kubernetes", "Docker", "M-Pesa Daraja API"],
+  "email": "mailto:nangendodennis@gmail.com",
+  "sameAs": ["https://github.com/devnabibia", "https://x.com/devnabibia"]
+}
+        </script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" as="script" crossorigin>
+        <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
+            href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500;600&display=swap">
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500;600&display=swap"></noscript>
+        <link rel="stylesheet" href="css/site.css">
+    </head>
+
+    <body>
+        <!-- Boot screen -->
+        <div class="preloader" id="preloader" aria-hidden="true">
+            <div class="pl-panel pl-a"></div>
+            <div class="pl-panel pl-b"></div>
+            <div class="pl-inner">
+                <div class="pl-log" id="pl-log"></div>
+                <div class="pl-count"><span id="pl-num">0</span><small>%</small></div>
+                <div class="pl-bar"><span id="pl-bar"></span></div>
+                <div class="pl-foot"><span>dennis nangendo</span><span>nairobi · ke</span></div>
+            </div>
+        </div>
+
+        <canvas id="gl" class="gl" aria-hidden="true"></canvas>
+        <div class="vignette" aria-hidden="true"></div>
+        <div class="noise" aria-hidden="true"></div>
+        <div class="progress" aria-hidden="true"></div>
+        <div class="cursor" aria-hidden="true">
+            <div class="cursor-ring"><span class="cursor-label"></span></div>
+            <div class="cursor-dot"></div>
+        </div>
+        <div class="hud" aria-hidden="true">
+            <div class="hud-l"><b id="hud-idx">00</b><span class="hud-line"></span><span id="hud-label">INDEX</span></div>
+            <div class="hud-r"><span>SCROLL</span><b id="hud-pct">000</b><span>%</span></div>
+        </div>
+
+        <!-- Header -->
+        <header id="header" class="header">
+            <a href="#top" class="logo">
+                <span class="logo-mark">DN</span>
+                <span>dennisnangendo<span class="caret-blink">_</span></span>
+            </a>
+            <nav class="nav">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#stack">Stack</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="header-cta">
+                <!-- To add a resume button, put your PDF in downloads/ and uncomment:
+                <a href="downloads/Dennis-Nangendo-Resume.pdf" target="_blank" class="btn btn-ghost btn-sm">Resume</a> -->
+                <a href="#contact" class="btn btn-primary btn-sm">Contact <i class="fas fa-arrow-right arrow"></i></a>
+                <button id="menu-toggle" class="menu-btn" aria-label="Open menu">
+                    <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-width="1.8" d="M4 8h16M4 16h16" />
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <div id="mobile-menu" class="mobile-menu">
+            <button id="menu-close" class="m-close" aria-label="Close menu"><i class="fas fa-times"></i></button>
+            <a href="#about" class="m-link"><span>01</span>About</a>
+            <a href="#experience" class="m-link"><span>02</span>Experience</a>
+            <a href="#stack" class="m-link"><span>03</span>Stack</a>
+            <a href="#projects" class="m-link"><span>04</span>Projects</a>
+            <a href="#contact" class="m-link"><span>05</span>Contact</a>
+            <div class="m-actions">
+                <a href="mailto:nangendodennis@gmail.com" class="btn btn-primary"><i class="far fa-envelope"></i> Email me</a>
+                </div>
+        </div>
+
+        <main>
+            <!-- Hero -->
+            <section id="top" class="hero" data-shape="sphere" data-label="Index" data-idx="00">
+                <div class="container hero-inner">
+                    <div class="hero-out">
+                        <p class="hero-pill" data-in>
+                            <span class="pill-ic"><i class="fas fa-microchip"></i></span>
+                            Software Engineer <span class="sep">✦</span> Nairobi, KE
+                        </p>
+                    </div>
+
+                    <h1 class="hero-name" id="hero-name">
+                        <span class="line grad-text">Dennis</span>
+                        <span class="line"><span class="shine-text">Nangendo</span><span class="accent-dot">.</span></span>
+                    </h1>
+
+                    <div class="hero-out">
+                        <p class="hero-sub" data-in>
+                            I build <span id="typer" class="typer"
+                                data-words='["EV charging platforms.","Go backends.","fleet management systems.","data ingestion pipelines.","M-Pesa payment flows."]'>EV charging platforms.</span><br>
+                            Backend systems, built to last.
+                        </p>
+                        <div class="hero-ctas" data-in>
+                            <a href="mailto:nangendodennis@gmail.com" class="btn btn-primary"
+                                data-magnetic><i class="far fa-envelope"></i> Get in touch</a>
+                            <a href="#projects" class="btn btn-ghost" data-magnetic>View projects <i
+                                    class="fas fa-arrow-right arrow"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="term-out">
+                    <div class="term-wrap">
+                        <div class="term-bob">
+                            <div class="term" data-tilt="12">
+                                <div class="term-bar"><i></i><i></i><i></i></div>
+                                <div class="term-body" id="term"><span class="p">$ </span><span class="w">whoami</span>
+dennis
+<span class="p">$ </span><span class="w">go run ./cmd/csms</span>
+<span class="ok">✓ </span>mqtt broker connected
+<span class="ok">✓ </span>websocket server listening :8080</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-bottom hero-out">
+                    <div class="container hero-bottom-inner">
+                        <div class="socials" data-in>
+                            <a href="https://github.com/devnabibia" target="_blank" class="social" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://x.com/devnabibia" target="_blank" class="social" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                            <a href="mailto:nangendodennis@gmail.com" class="social" aria-label="Email"><i class="far fa-envelope"></i></a>
+                        </div>
+                        <div class="scroll-cue" data-in><span class="mouse"></span>scroll to explore</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tapes -->
+            <div class="tapes" aria-hidden="true">
+                <div class="tape tape-b"><div class="tape-track">
+                    <span>MQTT</span><span>OCPP</span><span>WebSockets</span><span>Daraja</span><span>USSD</span><span>CI/CD</span><span>Observability</span>
+                    <span>MQTT</span><span>OCPP</span><span>WebSockets</span><span>Daraja</span><span>USSD</span><span>CI/CD</span><span>Observability</span>
+                </div></div>
+                <div class="tape tape-a"><div class="tape-track">
+                    <span>Go</span><span>Python</span><span>TypeScript</span><span>Kubernetes</span><span>Docker</span><span>Linux</span><span>SQL</span><span>Node.js</span><span>React</span>
+                    <span>Go</span><span>Python</span><span>TypeScript</span><span>Kubernetes</span><span>Docker</span><span>Linux</span><span>SQL</span><span>Node.js</span><span>React</span>
+                </div></div>
+            </div>
+
+            <!-- About -->
+            <section id="about" class="section" data-shape="helix" data-label="About" data-idx="01">
+                <span class="sec-num" data-speed="0.5" aria-hidden="true">01</span>
+                <div class="container about-grid">
+                    <div class="about-copy">
+                        <p class="cmd"><span class="prompt">➜</span><span class="path">~</span><span data-type>cat about.md</span></p>
+                        <h2 class="h2" data-flip>A problem solver <span class="grad-text">in software.</span></h2>
+                        <div class="bio" data-scrub-words>
+                            <p>I'm a full stack software engineer based in Nairobi, with a heavy focus on
+                                <strong>backend development and system design</strong>. I hold a <strong>BSc. in Computer
+                                Science</strong> from Rongo University.</p>
+                            <p>I focus on the solution and whether it will last. My work spans web applications,
+                                <strong>distributed systems and backend services</strong> in Go.</p>
+                            <p>I want to keep learning as much as I can and put it to work on real problems.</p>
+                        </div>
+                        <div class="stats">
+                            <div class="stat"><div class="num"><span data-count="4">4</span></div><p data-scramble>Core languages</p></div>
+                            <div class="stat"><div class="num"><span data-count="3">3</span></div><p data-scramble>Featured projects</p></div>
+                            <div class="stat"><div class="num"><span data-count="4">4</span></div><p data-scramble>Years of CS study</p></div>
+                        </div>
+                    </div>
+
+                    <div class="about-visual">
+                        <div class="about-photo photo" data-cursor="HOVER">
+                            <img src="img/dennis.jpg" alt="Portrait of Dennis Nangendo" width="900" height="900" loading="lazy" decoding="async">
+                            <div class="tagline"><span>~/dennis</span><span>dennis.jpg</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience -->
+            <section id="experience" class="section" data-shape="cube" data-label="Experience" data-idx="02">
+                <span class="sec-num" data-speed="0.5" aria-hidden="true">02</span>
+                <div class="container">
+                    <div class="section-head">
+                        <p class="cmd"><span class="prompt">➜</span><span class="path">~</span><span data-type>git log --career</span></p>
+                        <h2 class="h2" data-flip>Where I've worked <span class="grad-text">&amp; studied.</span></h2>
+                    </div>
+
+                    <div class="xp-stack">
+                        <article class="card xp-card" style="--i:0">
+                            <span class="xp-ghost" aria-hidden="true">01</span>
+                            <div class="xp-top"><span class="xp-idx">// 01</span><span class="badge live"><span class="dot"></span>Current</span></div>
+                            <div class="xp-body">
+                                <div class="xp-main">
+                                    <h3>Software Engineer</h3>
+                                    <p class="xp-org">County Government of Uasin Gishu</p>
+                                    <p class="xp-date" data-scramble>2025 — PRESENT</p>
+                                </div>
+                                <ul>
+                                    <li>Lead design and development of CHAJI's Charging Station Management System (CSMS), Battery Intelligence and Fleet Management systems in Go.</li>
+                                    <li>Build high-throughput data ingesters over WebSocket and MQTT.</li>
+                                    <li>Design wallet-based billing on the Daraja (M-Pesa) API, and SDKs for USSD, SMS and Daraja used across our APIs.</li>
+                                    <li>Develop a multi-channel notifications and alerts system.</li>
+                                    <li>Own system design decisions and optimise based on observability metrics.</li>
+                                    <li>Maintain a private fork of the open-source ocpp-go package, extending it with additional functionality.</li>
+                                    <li>Build CI/CD pipelines, write unit tests and work with hardware and product teams on end-to-end solutions.</li>
+                                </ul>
+                            </div>
+                        </article>
+
+                        <article class="card xp-card" style="--i:1">
+                            <span class="xp-ghost" aria-hidden="true">02</span>
+                            <div class="xp-top"><span class="xp-idx">// 02</span><span class="badge live" style="margin-left:6px">Graduated</span></div>
+                            <div class="xp-body">
+                                <div class="xp-main">
+                                    <h3>BSc. Computer Science</h3>
+                                    <p class="xp-org">Rongo University</p>
+                                    <p class="xp-date" data-scramble>2020 — 2024</p>
+                                </div>
+                                <ul>
+                                    <li>Graduated with Second Class Honours (Upper Division).</li>
+                                    <li>Lead in the innovation club.</li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stack -->
+            <section id="stack" class="section stack" data-shape="lattice" data-label="Stack" data-idx="03">
+                <div class="container stack-head">
+                    <p class="cmd"><span class="prompt">➜</span><span class="path">~</span><span data-type>kubectl get skills -A</span></p>
+                    <h2 class="h2" data-flip>The tools I <span class="grad-text">ship with.</span></h2>
+                    <p class="lead" data-type>From wire protocols to production backends.</p>
+                </div>
+
+                <div class="ring-stage" data-cursor="SCROLL">
+                    <div class="ring" id="ring">
+                        <div class="card ring-card" data-name="Languages">
+                            <div class="rc-top"><span class="skill-icon"><i class="fas fa-code"></i></span><span class="rc-idx">01</span></div>
+                            <h3>Languages</h3>
+                            <p>Systems to scripting.</p>
+                            <div class="chips">
+                                <span class="chip">Go</span><span class="chip">Python</span><span class="chip">TypeScript</span><span class="chip">SQL</span>
+                            </div>
+                        </div>
+                        <div class="card ring-card" data-name="Infrastructure">
+                            <div class="rc-top"><span class="skill-icon"><i class="fas fa-dharmachakra"></i></span><span class="rc-idx">02</span></div>
+                            <h3>Infrastructure</h3>
+                            <p>Containers, clusters and pipelines.</p>
+                            <div class="chips">
+                                <span class="chip">Kubernetes</span><span class="chip">Docker</span><span class="chip">Linux</span><span class="chip">GitHub Actions</span>
+                            </div>
+                        </div>
+                        <div class="card ring-card" data-name="Frameworks & Web">
+                            <div class="rc-top"><span class="skill-icon"><i class="fas fa-layer-group"></i></span><span class="rc-idx">03</span></div>
+                            <h3>Frameworks &amp; Web</h3>
+                            <p>Interfaces and APIs that hold up.</p>
+                            <div class="chips">
+                                <span class="chip">Fiber</span><span class="chip">Node.js</span><span class="chip">React</span>
+                            </div>
+                        </div>
+                        <div class="card ring-card" data-name="Protocols & Messaging">
+                            <div class="rc-top"><span class="skill-icon"><i class="fas fa-broadcast-tower"></i></span><span class="rc-idx">04</span></div>
+                            <h3>Protocols &amp; Messaging</h3>
+                            <p>Devices, payments and people talking to the cloud.</p>
+                            <div class="chips">
+                                <span class="chip">MQTT</span><span class="chip">WebSockets</span><span class="chip">OCPP</span>
+                                <span class="chip">M-Pesa Daraja</span><span class="chip">USSD</span><span class="chip">SMS</span>
+                            </div>
+                        </div>
+                        <div class="card ring-card" data-name="Data & Practices">
+                            <div class="rc-top"><span class="skill-icon"><i class="fas fa-database"></i></span><span class="rc-idx">05</span></div>
+                            <h3>Data &amp; Practices</h3>
+                            <p>Building it so it lasts.</p>
+                            <div class="chips">
+                                <span class="chip">System design</span><span class="chip">CI/CD</span><span class="chip">Unit testing</span><span class="chip">Observability</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ring-readout"><b id="ring-idx">01</b><span>/ 05 —</span><b id="ring-name">Languages</b></div>
+            </section>
+
+            <!-- Projects -->
+            <section id="projects" class="projects" data-shape="torus" data-label="Projects" data-idx="04">
+                <div class="proj-ghost" aria-hidden="true">BUILT · SHIPPED · DEPLOYED · BUILT · SHIPPED ·</div>
+                <div class="proj-track" id="proj-track">
+                    <div class="proj-slot proj-intro">
+                        <p class="cmd"><span class="prompt">➜</span><span class="path">~</span><span data-type>ls -la ~/projects</span></p>
+                        <h2 class="h2" data-flip>Things I've <span class="grad-text">built.</span></h2>
+                        <p class="lead" data-type>Backend services and network tools.</p>
+                        <p class="proj-hint">keep scrolling <span>→</span></p>
+                    </div>
+
+                    <div class="proj-slot wide">
+                        <article class="card proj feature">
+                            <div class="feature-body">
+                                <div class="proj-head">
+                                    <span class="badge live"><span class="dot"></span>Featured project</span>
+                                    <div class="proj-actions">
+                                        <a href="https://github.com/devnabibia/wisdom-tcp-server" target="_blank" class="icon-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                                <h3>Wisdom TCP Server</h3>
+                                <p>A TCP server with DDoS protection using Proof of Work (PoW) that serves random quotes.</p>
+                                <div class="chips">
+                                    <span class="chip">TCP</span><span class="chip">Proof of Work</span><span class="chip">DDoS protection</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="proj-slot">
+                        <article class="card proj" data-tilt="6">
+                            <div class="proj-head">
+                                <span class="proj-index">/02</span>
+                                <div class="proj-actions">
+                                    <a href="https://github.com/devnabibia/cloud_messaging_app" target="_blank" class="icon-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                            <div class="proj-big" aria-hidden="true">02</div>
+                            <h3>Cloud Messaging App</h3>
+                            <p>A cloud messaging app that provides its credentials using Application Default Credentials (ADC).</p>
+                            <div class="chips"><span class="chip">Messaging</span><span class="chip">ADC</span></div>
+                        </article>
+                    </div>
+
+                    <div class="proj-slot">
+                        <article class="card proj" data-tilt="6">
+                            <div class="proj-head">
+                                <span class="proj-index">/03</span>
+                                <div class="proj-actions">
+                                    <a href="https://github.com/devnabibia/microservices" target="_blank" class="icon-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                            <div class="proj-big" aria-hidden="true">03</div>
+                            <h3>Microservices</h3>
+                            <p>A microservices project. See the repository for the details.</p>
+                            <div class="chips"><span class="chip">Microservices</span></div>
+                        </article>
+                    </div>
+                </div>
+                <div class="proj-counter" id="proj-counter"><b>01</b>/ 03</div>
+            </section>
+
+            <!-- Contact -->
+            <section id="contact" class="section contact" data-shape="ring" data-label="Contact" data-idx="05">
+                <div class="container">
+                    <p class="cmd"><span class="prompt">➜</span><span class="path">~</span><span data-type>ping dennis --now</span></p>
+                    <div class="mega-wrap">
+                        <h2 class="mega" data-flip>Let's build <span class="grad-text">something.</span></h2>
+                    </div>
+                    <p class="lead" data-type>Got a project in mind, need a backend solution, or just want to connect? I'm always open to conversations about technology and collaboration.</p>
+                    <div class="contact-actions">
+                        <a href="mailto:nangendodennis@gmail.com" class="btn btn-primary" data-magnetic><i class="far fa-envelope"></i> nangendodennis@gmail.com</a>
+                    </div>
+                    <div class="contact-meta">
+                        <a href="https://github.com/devnabibia" target="_blank">github ↗</a>
+                        <a href="https://x.com/devnabibia" target="_blank">x ↗</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container footer-row">
+                <span>© 2026 Dennis Nangendo</span>
+                <a href="#top" class="mono">back to top ↑</a>
+            </div>
+            <div class="footer-big" aria-hidden="true"><span class="fade-text">NANGENDO</span></div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" crossorigin defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" crossorigin defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" crossorigin defer></script>
+        <script src="js/site.js" defer></script>
+    </body>
+
+</html>
